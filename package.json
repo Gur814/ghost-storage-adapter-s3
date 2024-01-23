@@ -14,15 +14,11 @@
   },
   "dependencies": {
     "aws-sdk": "^2.331.0",
-    "ghost-storage-base": "0.0.1"
+    "ghost-storage-base": "0.0.1",
+    "@tryghost/constants": "^1.0.7"
   },
-  "description": "An AWS S3 storage adapter for Ghost 0.10+",
+  "description": "An AWS S3 storage adapter for Ghost 5.X",
   "devDependencies": {
-    "commitizen": "^2.8.6",
-    "cz-conventional-changelog": "^1.2.0",
-    "semantic-release": "^15.9.9",
-    "snazzy": "^5.0.0",
-    "standard": "^8.3.0"
   },
   "homepage": "https://github.com/colinmeinke/ghost-storage-adapter-s3#readme",
   "license": "ISC",
@@ -33,7 +29,6 @@
     "s3",
     "storage"
   ],
-  "main": "index.js",
   "name": "ghost-storage-adapter-s3",
   "repository": {
     "type": "git",

@@ -11,7 +11,7 @@ const readFileAsync = fp => new Promise((resolve, reject) => readFile(fp, (err, 
 const stripLeadingSlash = s => s.indexOf('/') === 0 ? s.substring(1) : s
 const stripEndingSlash = s => s.indexOf('/') === (s.length - 1) ? s.substring(0, s.length - 1) : s
 
-class S3Adapter extends BaseAdapter {
+class S3ImagesAdapter extends BaseAdapter {
   constructor(config = {}) {
     super(config);
 
@@ -108,16 +108,17 @@ class S3Adapter extends BaseAdapter {
           ContentType: image.type,
           Key: stripLeadingSlash(fileName)
         }
+        
         if (this.serverSideEncryption !== '') {
           config.ServerSideEncryption = this.serverSideEncryption
         }
+        
         this.s3()
           .putObject(config, (err, data) => {
             if (err) {
               reject(err)
             } else {
-              resolve(`/content/images/${fileName}`);
-              // resolve(`${this.host}/${fileName}`); 
+              resolve(`/content/files/${fileName}`);
             }
           })
       })
@@ -163,4 +164,4 @@ class S3Adapter extends BaseAdapter {
   }
 }
 
-module.exports = S3Adapter;
+module.exports = S3ImagesAdapter;

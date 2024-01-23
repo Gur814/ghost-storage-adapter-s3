@@ -7,8 +7,6 @@ const join = path.join
 const fs = require('fs')
 const readFile = fs.readFile
 
-// const logging = require('@tryghost/logging');
-
 const readFileAsync = fp => new Promise((resolve, reject) => readFile(fp, (err, data) => err ? reject(err) : resolve(data)))
 const stripLeadingSlash = s => s.indexOf('/') === 0 ? s.substring(1) : s
 const stripEndingSlash = s => s.indexOf('/') === (s.length - 1) ? s.substring(0, s.length - 1) : s
@@ -49,7 +47,6 @@ class S3ImagesAdapter extends BaseAdapter {
   }
 
   urlToPath(url) {
-    // return url.substring(0, url.lastIndexOf('/')).replace(this.host, '')
     return stripLeadingSlash(url.replace(this.host, ''))
   }
 
@@ -120,6 +117,7 @@ class S3ImagesAdapter extends BaseAdapter {
             if (err) {
               reject(err)
             } else {
+              // TODO: This is the only variance ATM.
               resolve(`/content/files/${fileName}`);
             }
           })
